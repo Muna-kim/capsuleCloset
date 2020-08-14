@@ -1,5 +1,7 @@
-package kr.green.capsuleCloset.Dao;
+package kr.green.capsuleCloset.dao;
+
 
 public interface ClosetDao {
+
 
 }

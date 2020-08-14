@@ -6,14 +6,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import kr.green.capsuleCloset.Service.ClosetService;
+import kr.green.capsuleCloset.service.ClosetService;
 
 @Controller
 public class ClosetController {
 	
-//	@Autowired
-//	ClosetService closetService;
-//	
+	@Autowired
+	ClosetService closetService;
+	
 	
 	@RequestMapping(value="/aboutCloset" , method=RequestMethod.GET)
 	public ModelAndView aboutClosetGet(ModelAndView mv) {

@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>My Closet</title>
+<title>Today's clothes</title>
 </head>
 <body>
-My Closet
+	Today's clothes
 </body>
 </html>

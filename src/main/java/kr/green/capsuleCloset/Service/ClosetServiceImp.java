@@ -1,5 +1,9 @@
-package kr.green.capsuleCloset.Service;
+package kr.green.capsuleCloset.service;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class ClosetServiceImp implements ClosetService {
+
 
 }

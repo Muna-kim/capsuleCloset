@@ -1,4 +1,4 @@
-package kr.green.capsuleCloset.Service;
+package kr.green.capsuleCloset.service;
 
 public interface ClosetService {
 
