@@ -17,7 +17,7 @@ public class ClosetController {
 	
 	@RequestMapping(value="/aboutCloset" , method=RequestMethod.GET)
 	public ModelAndView aboutClosetGet(ModelAndView mv) {
-		mv.setViewName("/closet/myCloset");
+		mv.setViewName("/closet/aboutCloset");
 		return mv;
 	}
 	
@@ -29,7 +29,12 @@ public class ClosetController {
 	
 	@RequestMapping(value="/othersCloset" , method=RequestMethod.GET)
 	public ModelAndView othersClosetGet(ModelAndView mv) {
-	    	mv.setViewName("/closet/myCloset");
+	    	mv.setViewName("/closet/othersCloset");
+	    return mv;
+	}
+	@RequestMapping(value="/todaysClothes" , method=RequestMethod.GET)
+	public ModelAndView todaysclothesGet(ModelAndView mv) {
+	    	mv.setViewName("/closet/todaysClothes");
 	    return mv;
 	}
 	

@@ -4,10 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>My Closet</title>
+<title>Insert title here</title>
 </head>
 <body>
-My Closet
-<a href="<%=request.getContextPath()%>/todaysClothes"><button type=button>오늘의 옷</button></a>
+
 </body>
 </html>

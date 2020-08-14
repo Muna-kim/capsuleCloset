@@ -24,13 +24,28 @@ public class HomeController {
 	public ModelAndView openTilesView(ModelAndView mv) throws Exception{
 	    mv.setViewName("/main/home");
 	    mv.addObject("setHeader", "타일즈");
-	    System.out.println(userService.getId("aaa"));
 	    return mv;
 	}
 
 	@RequestMapping(value="/login" , method=RequestMethod.GET)
 	public ModelAndView loginGet(ModelAndView mv) {
 	    	mv.setViewName("/main/login");
+	    return mv;
+	}
+	
+	@RequestMapping(value="/login" , method=RequestMethod.POST)
+	public ModelAndView loginPost(ModelAndView mv,UserVo userVo) {
+	    	System.out.println(userVo);
+	    	UserVo user = userService.signin(userVo);
+	    	if(user!=null) {
+	    		mv.setViewName("redirect:/");
+	    		mv.addObject("user",user);
+	    		System.out.println(user);
+	    	}
+	    	else {
+	    		mv.setViewName("redirect:/signup");
+	    		
+	    	}
 	    return mv;
 	}
 	
@@ -42,8 +57,15 @@ public class HomeController {
 	
 	@RequestMapping(value="/signup" , method=RequestMethod.POST)
 	public ModelAndView signupPost(ModelAndView mv,UserVo userVo) {
-			mv.setViewName("/main/signup");
+			mv.setViewName("redirect:/");
 	    	System.out.println(userVo);
+	    	userService.signup(userVo);
+	    return mv;
+	}
+	
+	@RequestMapping(value="/logout" , method=RequestMethod.GET)
+	public ModelAndView logoutGet(ModelAndView mv) {
+	    	mv.setViewName("redirect:/");
 	    return mv;
 	}
 }

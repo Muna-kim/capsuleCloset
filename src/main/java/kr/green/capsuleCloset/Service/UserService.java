@@ -1,5 +1,10 @@
 package kr.green.capsuleCloset.service;
 
+import kr.green.capsuleCloset.vo.UserVo;
+
 public interface UserService {
-	public String getId(String id);
+
+	void signup(UserVo userVo);
+
+	public UserVo signin(UserVo userVo);
 }

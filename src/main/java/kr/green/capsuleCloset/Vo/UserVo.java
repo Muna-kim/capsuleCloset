@@ -8,7 +8,8 @@ public class UserVo {
 	public String gender;
 	public int phoneNum;
 	public String email;
-	
+
+
 	public String getId() {
 		return id;
 	}
@@ -54,9 +55,10 @@ public class UserVo {
 	}
 	@Override
 	public String toString() {
-		return "ClosetVo [id=" + id + ", pw=" + pw + ", pw2=" + pw2 + ", name=" + name + ", gender=" + gender
-				+ ", phoneNum=" + phoneNum + ", address=" + ", email=" + email + "]";
+		return "UserVo [id=" + id + ", pw=" + pw + ", pw2=" + pw2 + ", name=" + name + ", gender=" + gender
+				+ ", phoneNum=" + phoneNum + ", email=" + email + "]";
 	}
+
 	
 	
 }

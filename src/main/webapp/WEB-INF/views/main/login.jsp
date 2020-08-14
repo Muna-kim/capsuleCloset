@@ -7,14 +7,17 @@
 <title>Insert title here</title>
 </head>
 <body>
+<form method="post" action="">
 	<div class="form-group">
 	  <label for="id">ID :</label>
-	  <input type="text" class="form-control" id="id">
+	  <input type="text" class="form-control" id="id" name="id">
 	</div>
 	<div class="form-group">
 	  <label for="pw">PASSWORD :</label>
-	  <input type="password" class="form-control" id="pw">
+	  <input type="password" class="form-control" id="pw" name="pw">
 	</div>
-	<button type="button" class="btn btn-outline-secondary">LOGIN</button>
+	<button type="submit" class="btn btn-outline-secondary">LOGIN</button>
+</form>
+${user}
 </body>
 </html>

@@ -35,7 +35,6 @@
 	  <label for="phoneNum">PHONE NUM:</label>
 	  <input type="text" class="form-control" id="phoneNum" name="phoneNum">
 	</div>
-	
 	<div class="form-group">
 	  <label for="email">EMAIL :</label>
 	  <input type="email" class="form-control" id="email" name="email">
