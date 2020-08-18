@@ -1,5 +1,7 @@
 package kr.green.capsuleCloset.service;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -32,6 +34,10 @@ public class UserServiceImp implements UserService {
 			return user;
 		}
 		return null;
+	}
+	@Override
+	public UserVo getUser(HttpServletRequest r) {
+		return (UserVo)r.getSession().getAttribute("user");
 	}
 
 }

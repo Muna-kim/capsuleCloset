@@ -3,7 +3,13 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.green.capsuleCloset.dao.ClosetDao">
-  <select id="getEmail" resultType="String">
-    select email from member where id = #{id}
+  <select id="getCloset" resultType="kr.green.capsuleCloset.vo.ClosetVo">
+    select * from myCloset where id=#{id}
   </select>
+  <insert id="setCloset">
+  insert into
+  	myCloset(setGoal,top,bottom,myCloset.outer,shoes,id)
+  	values(#{closetVo.setGoal},#{closetVo.top},#{closetVo.bottom},#{closetVo.outer},#{closetVo.shoes},#{closetVo.id})
+  </insert>
+  
 </mapper>

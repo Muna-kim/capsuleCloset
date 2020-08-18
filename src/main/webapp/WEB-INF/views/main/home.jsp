@@ -10,7 +10,8 @@
 <h1>
 	Hello world!  
 </h1>
+<img src="<%=request.getContextPath()%>/resources/image/1aa.jpg" width=100%>
 
-<P>  The time on the server is ${serverTime}. </P>
+<P>  capsule closet </P>
 </body>
 </html>

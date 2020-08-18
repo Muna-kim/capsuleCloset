@@ -7,6 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-<img src="<%=request.getContextPath()%>/resources/image/1ab.jpg" width=100%>
+ 옷장
+ <div class="container">
+  <h1>My First Bootstrap Page</h1>
+  <p>This is some text.</p>
+</div>
 </body>
 </html>
