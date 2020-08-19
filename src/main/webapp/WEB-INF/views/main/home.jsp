@@ -8,7 +8,7 @@
 </head>
 <body>
 <h1>
-	Hello world!  
+	Capsule Closest  
 </h1>
 <img src="<%=request.getContextPath()%>/resources/image/1aa.jpg" width=100%>
 

@@ -30,14 +30,20 @@ public class ClosetController {
 	
 	@RequestMapping(value="/myCloset" , method=RequestMethod.GET)
 	public ModelAndView myClosetGet(ModelAndView mv,HttpServletRequest r) {
-		UserVo user = userService.getUser(r);
-		ClosetVo closetVo = closetService.getCloset(user.getId());
-		if(closetVo != null) {
-			mv.setViewName("redirect:/myCloset2");
-		}
-		else {
-			mv.setViewName("/closet/myCloset");
-		}
+			UserVo user = userService.getUser(r);
+			if(user==null) {
+				mv.setViewName("/closet/myCloset");
+			}
+			else {
+				ClosetVo closetVo = closetService.getCloset(user.getId());
+				if(closetVo != null) {
+					mv.setViewName("redirect:/myCloset2");
+				}
+				else {
+					mv.setViewName("/closet/myCloset");
+				}
+				
+			}
 	    return mv;
 	}
 	@RequestMapping(value="/myCloset" , method=RequestMethod.POST)
@@ -51,9 +57,16 @@ public class ClosetController {
 	}
 	@RequestMapping(value="/myCloset2" , method=RequestMethod.GET)
 	public ModelAndView myCloset2Get(ModelAndView mv,HttpServletRequest r) {
-//			UserVo user= userService.getUser(r);
+			UserVo user= userService.getUser(r);
+//			ClosetVo c = new ClosetVo();
+//			c.setSetGoal(60);
+//			c.setTop(7);
+//			mv.addObject("closet", c);
+			ClosetVo closet = closetService.getCloset(user.getId());
+			mv.addObject("closet",closet);
 	    	mv.setViewName("/closet/myCloset2");
-	    	System.out.println();
+	    	System.out.println(user);
+	    	System.out.println(closet);
 	    return mv;
 	}
 
