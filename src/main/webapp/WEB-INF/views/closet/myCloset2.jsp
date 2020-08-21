@@ -17,10 +17,10 @@
 
 	.small-box{
 	border:1px solid gray;
-	width: 19.5%;
+	width: 130px;
 	height: 150px;
 	float:left;
-	margin-left:0.5%;
+	margin-left:1px;
 	margin-bottom:1px;
 	}
 
@@ -34,58 +34,55 @@
 		width:100%;
 		height:100%;
 		display:block;
-		
-	}
-	#preview{
 		max-width: 100%;
-	}
-	#uploadFile{
-		
 	}
 	
 </style>
 <body>
  My Closet
- 	<div>Top</div>
- 	<div class="after">
- 	<c:forEach begin="1" end="${closet.top}">
- 		<div class=small-box>
- 		<input type="file" name="uploadFile" id="uploadFile" multiple>
-        <div class="preview"></div>
- 		</div>
- 	</c:forEach>
- 	</div>
- 	
-	
- 	<div>Bottom</div>
- 	<div class="after">
- 	<c:forEach begin="1" end="${closet.bottom}">
- 		<div class=small-box>
- 		<input type="file" name="uploadFile" id="uploadFile" multiple>
-        <div class="preview"></div></div>
- 	</c:forEach>
- 	</div>
- 	
- 	<div>Outer</div>
- 	<div class="after">
- 	<c:forEach begin="1" end="${closet.outer}">
- 		<div class=small-box>
- 		<input type="file" name="uploadFile" id="uploadFile" multiple>
-        <div class="preview"></div>
-        </div>
- 	</c:forEach>
- 	</div>
- 	
- 	<div>shoes</div>
- 	<div class="after">
- 	<c:forEach begin="1" end="${closet.shoes}">
- 		<div class=small-box>
- 		<input type="file" name="uploadFile" id="uploadFile" multiple>
-        <div class="preview"></div>
-        </div>
- 	</c:forEach>
- 	</div>
- 	
+	 	<form method="post" action=""  enctype="multipart/form-data">
+		 	<div>Top</div>
+		 	<div class="after">
+		 	<c:forEach begin="1" end="${closet.top}">
+		 		<div class=small-box>
+		 		<input type="file" name="file2" id="file" multiple>
+		        <div class="preview"></div>
+		 		</div>
+		 	</c:forEach>
+		 	</div>
+		 	
+			
+		 	<div>Bottom</div>
+		 	<div class="after">
+		 	<c:forEach begin="1" end="${closet.bottom}">
+		 		<div class=small-box>
+		 		<input type="file" name="file3" id="file" multiple>
+		        <div class="preview"></div></div>
+		 	</c:forEach>
+		 	</div>
+		 	
+		 	<div>Outer</div>
+		 	<div class="after">
+		 	<c:forEach begin="1" end="${closet.outer}">
+		 		<div class=small-box>
+		 		<input type="file" name="file4" id="file" multiple>
+		        <div class="preview"></div>
+		        </div>
+		 	</c:forEach>
+		 	</div>
+		 	
+		 	<div>shoes</div>
+		 	<div class="after">
+		 	<c:forEach begin="1" end="${closet.shoes}">
+		 		<div class=small-box>
+		 		<input type="file" name="file5" id="file" multiple>
+		        <div class="preview"></div>
+		        </div>
+		 	</c:forEach>
+		 	</div>
+		 	<button type="submit" class="btn btn-outline-secondary">옷장 저장하기</button>
+		 	<a href="<%=request.getContextPath()%>/myCloset3"><button type="button" class="btn btn-outline-secondary">내옷장보기</button></a>
+	 </form>
  	<script type="text/javascript">
 	  $(document).ready(function (e){
 	    $("input[type='file']").change(function(e){

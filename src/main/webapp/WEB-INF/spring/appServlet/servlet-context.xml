@@ -45,5 +45,19 @@
     </interceptors>
 	
 
+	 <beans:bean id="closetInterceptor" 
+        class="kr.green.capsuleCloset.interceptor.ClosetInterceptor"></beans:bean>
+    <interceptors>
+        <interceptor>
+            <mapping path="/closet"/>
+            <beans:ref bean="closetInterceptor"/>
+        </interceptor>
+    </interceptors>
+	
+	<!-- servlet-context.xml -->
+	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+	    <!-- 업로드 최대 크기 10Mb -->
+	    <beans:property name="maxUploadSize" value="10485760"></beans:property>
+	</beans:bean>
 	
 </beans:beans>

@@ -8,10 +8,18 @@ public class ClosetVo {
 	public int outer;
 	public int shoes;
 	public String id;
+	public String file;
 	
 	
 	
 
+	public String getFile() {
+		return file;
+	}
+
+	public void setFile(String file) {
+		this.file = file;
+	}
 
 	public String getId() {
 		return id;
@@ -72,8 +80,10 @@ public class ClosetVo {
 	@Override
 	public String toString() {
 		return "ClosetVo [closetNum=" + closetNum + ", setGoal=" + setGoal + ", top=" + top + ", bottom=" + bottom
-				+ ", outer=" + outer + ", shoes=" + shoes + ", id=" + id + "]";
+				+ ", outer=" + outer + ", shoes=" + shoes + ", id=" + id + ", file=" + file + "]";
 	}
+
+	
 
 	
 	

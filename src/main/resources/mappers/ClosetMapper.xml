@@ -11,5 +11,27 @@
   	myCloset(setGoal,top,bottom,myCloset.outer,shoes,id)
   	values(#{closetVo.setGoal},#{closetVo.top},#{closetVo.bottom},#{closetVo.outer},#{closetVo.shoes},#{closetVo.id})
   </insert>
+
+  <insert id="registerFile">
+  insert into
+  	file(id,clothes,file)
+  	values(#{id},#{fileVo.clothes},#{fileVo.file})
+  </insert>
+  
+  <select id="getTop" resultType="kr.green.capsuleCloset.vo.FileVo">
+  select * from capsulecloset.file where id=#{id} and clothes=#{clothes}
+  </select>
+  
+    <select id="getBottom" resultType="kr.green.capsuleCloset.vo.FileVo">
+  select * from capsulecloset.file where id=#{id} and clothes=#{clothes}
+  </select>
+  
+    <select id="getOuter" resultType="kr.green.capsuleCloset.vo.FileVo">
+  select * from capsulecloset.file where id=#{id} and clothes=#{clothes}
+  </select>
+  
+    <select id="getShoes" resultType="kr.green.capsuleCloset.vo.FileVo">
+  select * from capsulecloset.file where id=#{id} and clothes=#{clothes}
+  </select>
   
 </mapper>
