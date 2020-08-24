@@ -73,6 +73,19 @@ public class ClosetController {
 			ClosetVo closet = closetService.getCloset(user.getId());
 			mv.addObject("closet",closet);
 	    	mv.setViewName("/closet/myCloset2");
+	    	
+	    	ArrayList<FileVo> fileTop=closetService.getTop(user.getId(),"top");
+	    	mv.addObject("fileTop", fileTop);
+
+	    	ArrayList<FileVo> fileBottom=closetService.getBottom(user.getId(),"bottom");
+	    	mv.addObject("fileBottom", fileBottom);
+	    	
+	    	ArrayList<FileVo> fileOuter=closetService.getOuter(user.getId(),"outer");
+	    	mv.addObject("fileOuter", fileOuter);
+	    	
+	    	ArrayList<FileVo> fileShoes=closetService.getShoes(user.getId(),"shoes");
+	    	mv.addObject("fileShoes", fileShoes);
+	    	
 	    	System.out.println(user);
 	    	System.out.println(closet);
 	    return mv;
@@ -130,13 +143,10 @@ public class ClosetController {
 				fileVo.setClothes("top");
 				closetService.registerFile(fileVo,user.getId());
 				System.out.println(fileVo);
+				
 				}
 			}
 		}
-		
-		
-		
-		
 		if(file3 != null) {
 			for(MultipartFile tmp : file3) {
 				if(tmp.getOriginalFilename().length() > 0) {

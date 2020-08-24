@@ -36,14 +36,31 @@
 		display:block;
 		max-width: 100%;
 	}
-	
+	.bigBox{
+		width:680px;
+		
+	}
+	.small-box>img{
+		width:100%;
+		height:100%;
+	}
 </style>
 <body>
  My Closet
+ ${closet.top-fileTop.size()}
 	 	<form method="post" action=""  enctype="multipart/form-data">
+	 	<div class="bigBox">
 		 	<div>Top</div>
 		 	<div class="after">
-		 	<c:forEach begin="1" end="${closet.top}">
+		 	
+		 	<c:forEach var="tmp" items="${fileTop}">
+			 		<div class=small-box >
+					<img src="<%=request.getContextPath()%>/resources/image${tmp.file}">
+			        <div class="preview"></div>
+			 		</div>
+			 	</c:forEach>
+		 	
+		 	<c:forEach begin="1" end="${closet.top-fileTop.size()}">
 		 		<div class=small-box>
 		 		<input type="file" name="file2" id="file" multiple>
 		        <div class="preview"></div>
@@ -52,9 +69,17 @@
 		 	</div>
 		 	
 			
+			
 		 	<div>Bottom</div>
 		 	<div class="after">
-		 	<c:forEach begin="1" end="${closet.bottom}">
+		 	
+		 	<c:forEach var="tmp" items="${fileBottom}">
+			 		<div class=small-box>
+			 		<img src="<%=request.getContextPath()%>/resources/image${tmp.file}">
+			        <div class="preview"></div></div>
+			 	</c:forEach>
+			 	
+		 	<c:forEach begin="1" end="${closet.bottom-fileBottom.size()}">
 		 		<div class=small-box>
 		 		<input type="file" name="file3" id="file" multiple>
 		        <div class="preview"></div></div>
@@ -63,7 +88,14 @@
 		 	
 		 	<div>Outer</div>
 		 	<div class="after">
-		 	<c:forEach begin="1" end="${closet.outer}">
+		 	<c:forEach var="tmp" items="${fileOuter}">
+			 		<div class=small-box>
+			 		<img src="<%=request.getContextPath()%>/resources/image${tmp.file}">
+			        <div class="preview"></div>
+			        </div>
+			 	</c:forEach>
+		 	
+		 	<c:forEach begin="1" end="${closet.outer-fileOuter.size()}">
 		 		<div class=small-box>
 		 		<input type="file" name="file4" id="file" multiple>
 		        <div class="preview"></div>
@@ -73,13 +105,20 @@
 		 	
 		 	<div>shoes</div>
 		 	<div class="after">
-		 	<c:forEach begin="1" end="${closet.shoes}">
+		 	<c:forEach var="tmp" items="${fileShoes}">
+			 		<div class=small-box>
+			 		<img src="<%=request.getContextPath()%>/resources/image${tmp.file}">
+			        <div class="preview"></div>
+			        </div>
+			 	</c:forEach>
+		 	<c:forEach begin="1" end="${closet.shoes-fileShoes.size()}">
 		 		<div class=small-box>
 		 		<input type="file" name="file5" id="file" multiple>
 		        <div class="preview"></div>
 		        </div>
 		 	</c:forEach>
 		 	</div>
+		 </div>
 		 	<button type="submit" class="btn btn-outline-secondary">옷장 저장하기</button>
 		 	<a href="<%=request.getContextPath()%>/myCloset3"><button type="button" class="btn btn-outline-secondary">내옷장보기</button></a>
 	 </form>
@@ -155,6 +194,9 @@
 	      });//arr.forEach
 	    }
 	  });
+
+
+	  
 	</script>
  
 </body>

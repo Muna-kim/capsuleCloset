@@ -50,6 +50,7 @@
  My Closet
 		 	<div>Top</div>
 		 	<div class="bigBox">
+			 	
 			 	<div class="after">
 			 	<c:forEach var="tmp" items="${fileTop}">
 			 		<div class=small-box >
