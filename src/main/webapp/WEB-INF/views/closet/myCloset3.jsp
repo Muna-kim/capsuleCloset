@@ -17,8 +17,8 @@
 
 	.small-box{
 	border:1px solid gray;
-	width: 130px;
-	height: 150px;
+	width: 140px;
+	height: 160px;
 	float:left;
 	margin-left:1px;
 	margin-bottom:1px;
@@ -42,7 +42,7 @@
 		height:100%;
 	}
 	.bigBox{
-		width:680px;
+		width:710px;
 		
 	}
 </style>
@@ -90,8 +90,10 @@
 			 	</c:forEach>
 			 	</div>
 		 	</div>
-		 	
-		 	
+		 	<a href="<%=request.getContextPath()%>/todaysClothes"><button class="btn btn-outline-secondary">오늘의 옷</button></a>
+		 	<c:if test="${closetNum==null}">
+		 	<a href="<%=request.getContextPath()%>"><button class="btn btn-outline-secondary">내 옷장 리셋하기</button></a>
+		 	</c:if>
  	<script type="text/javascript">
 	  $(document).ready(function (e){
 	    $("input[type='file']").change(function(e){

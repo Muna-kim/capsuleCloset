@@ -3,6 +3,8 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+
+<script src="https://kit.fontawesome.com/512fb7b03f.js"></script>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -17,8 +19,8 @@
 
 	.small-box{
 	border:1px solid gray;
-	width: 130px;
-	height: 150px;
+	width: 140px;
+	height: 160px;
 	float:left;
 	margin-left:1px;
 	margin-bottom:1px;
@@ -37,17 +39,30 @@
 		max-width: 100%;
 	}
 	.bigBox{
-		width:680px;
+		width:710px;
 		
 	}
 	.small-box>img{
 		width:100%;
 		height:100%;
 	}
+	.file{
+	display:none;
+	}
+	#icon-plus{
+		font-size: 30px;
+		margin-left: 54px;
+		margin-top: 64px;
+	}
+	#icon-plus:hover{
+		font-size: 35px;
+		color: gray;
+		cursor: pointer;
+	}
 </style>
 <body>
  My Closet
- ${closet.top-fileTop.size()}
+ ${registerdate}
 	 	<form method="post" action=""  enctype="multipart/form-data">
 	 	<div class="bigBox">
 		 	<div>Top</div>
@@ -62,8 +77,9 @@
 		 	
 		 	<c:forEach begin="1" end="${closet.top-fileTop.size()}">
 		 		<div class=small-box>
-		 		<input type="file" name="file2" id="file" multiple>
+		 		<input type="file" class="file" name="file2" id="file" multiple>
 		        <div class="preview"></div>
+		 		<i id="icon-plus" class="icon-plus fas fa-plus"></i>
 		 		</div>
 		 	</c:forEach>
 		 	</div>
@@ -82,6 +98,7 @@
 		 	<c:forEach begin="1" end="${closet.bottom-fileBottom.size()}">
 		 		<div class=small-box>
 		 		<input type="file" name="file3" id="file" multiple>
+		 		<i id="icon-plus" class="fas fa-plus"></i>
 		        <div class="preview"></div></div>
 		 	</c:forEach>
 		 	</div>
@@ -98,6 +115,7 @@
 		 	<c:forEach begin="1" end="${closet.outer-fileOuter.size()}">
 		 		<div class=small-box>
 		 		<input type="file" name="file4" id="file" multiple>
+		 		<i id="icon-plus" class="fas fa-plus"></i>
 		        <div class="preview"></div>
 		        </div>
 		 	</c:forEach>
@@ -114,6 +132,7 @@
 		 	<c:forEach begin="1" end="${closet.shoes-fileShoes.size()}">
 		 		<div class=small-box>
 		 		<input type="file" name="file5" id="file" multiple>
+		 		<i id="icon-plus" class="fas fa-plus"></i>
 		        <div class="preview"></div>
 		        </div>
 		 	</c:forEach>
@@ -140,7 +159,13 @@
 	      }
 	      preview(arr,$(this).next());
 	      $(this).css('display','none')
-	      
+	      if($(this).val() == ''){
+		      $(this).next().next().css('display','block')
+		  }else{
+			    $(this).next().next().css('display','none')
+		  }
+		  
+		      
 	    });//file change
 	    
 	    function checkExtension(fileName,fileSize){
@@ -193,9 +218,12 @@
 	        }
 	      });//arr.forEach
 	    }
+	    $('.icon-plus').click(function(){
+			$(this).prev().prev().click();
+		})
 	  });
-
-
+		
+		
 	  
 	</script>
  

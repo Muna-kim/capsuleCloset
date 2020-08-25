@@ -9,9 +9,27 @@ public class ClosetVo {
 	public int shoes;
 	public String id;
 	public String file;
+	public String registerdate;
+	public String title;
 	
 	
 	
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getRegisterdate() {
+		return registerdate;
+	}
+
+	public void setRegisterdate(String registerdate) {
+		this.registerdate = registerdate;
+	}
 
 	public String getFile() {
 		return file;
@@ -80,8 +98,12 @@ public class ClosetVo {
 	@Override
 	public String toString() {
 		return "ClosetVo [closetNum=" + closetNum + ", setGoal=" + setGoal + ", top=" + top + ", bottom=" + bottom
-				+ ", outer=" + outer + ", shoes=" + shoes + ", id=" + id + ", file=" + file + "]";
+				+ ", outer=" + outer + ", shoes=" + shoes + ", id=" + id + ", file=" + file + ", registerdate="
+				+ registerdate + ", title=" + title + "]";
 	}
+
+	
+	
 
 	
 

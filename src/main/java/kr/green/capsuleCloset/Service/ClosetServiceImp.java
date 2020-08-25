@@ -56,20 +56,22 @@ public class ClosetServiceImp implements ClosetService {
 		return closetDao.getShoes(id,clothes);
 	}
 
-//	@Override
-//	public void registerFile(ClosetVo closetVo, String id) {
-////		HttpSession session=r.getSession();
-////		UserVo user=(UserVo)session.getAttribute("user");
-////		closetVo.setId(user.getId());
-//		closetDao.registerFile(closetVo,id);
-//		
-//	}
+	@Override
+	public ArrayList<ClosetVo> getClosetVo() {
+		return closetDao.getClosetVo();
+	}
 
-//	@Override
-//	public void updateFile(ClosetVo closetVo) {
-//		closetDao.updateFile(closetVo);
-//		
-//	}
+	@Override
+	public String getRegisterdate(String id) {
+		return closetDao.getRegisterdate(id);
+	}
+
+	@Override
+	public ClosetVo getCloset2(Integer closetNum) {
+		return closetDao.getCloset2(closetNum);
+	}
+
+
 
 
 

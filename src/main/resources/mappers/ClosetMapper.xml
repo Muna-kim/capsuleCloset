@@ -8,8 +8,8 @@
   </select>
   <insert id="setCloset">
   insert into
-  	myCloset(setGoal,top,bottom,myCloset.outer,shoes,id)
-  	values(#{closetVo.setGoal},#{closetVo.top},#{closetVo.bottom},#{closetVo.outer},#{closetVo.shoes},#{closetVo.id})
+  	myCloset(title,setGoal,top,bottom,myCloset.outer,shoes,id)
+  	values(#{closetVo.title},#{closetVo.setGoal},#{closetVo.top},#{closetVo.bottom},#{closetVo.outer},#{closetVo.shoes},#{closetVo.id})
   </insert>
 
   <insert id="registerFile">
@@ -32,6 +32,18 @@
   
     <select id="getShoes" resultType="kr.green.capsuleCloset.vo.FileVo">
   select * from capsulecloset.file where id=#{id} and clothes=#{clothes}
+  </select>
+  
+  <select id="getClosetVo" resultType="kr.green.capsuleCloset.vo.ClosetVo">
+  select * from capsuleCloset.myCloset
+  </select>
+  
+  <select id="getRegisterdate" resultType="String">  
+  select registerdate from capsuleCloset.myCloset where id=#{id}
+  </select>
+  
+  <select id="getCloset2" resultType="kr.green.capsuleCloset.vo.ClosetVo">
+  select * from capsuleCloset.myCloset where closetNum=#{closetNum}
   </select>
   
 </mapper>

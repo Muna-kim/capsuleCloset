@@ -11,8 +11,6 @@ public interface ClosetService {
 
 	ClosetVo getCloset(String id);
 
-//	void registerFile(ClosetVo closetVo, String id);
-
 	void registerFile(FileVo fileVo, String id);
 
 	ArrayList<FileVo> getTop(String id, String clothes);
@@ -23,10 +21,12 @@ public interface ClosetService {
 
 	ArrayList<FileVo> getShoes(String id, String clothes);
 
-//	void updateFile(ClosetVo closetVo);
+	ArrayList<ClosetVo> getClosetVo();
 
-	
+	String getRegisterdate(String id);
 
-//	void setCloset(ClosetVo closetVo, UserVo userVo);
+	ClosetVo getCloset2(Integer closetNum);
+
+
 
 }

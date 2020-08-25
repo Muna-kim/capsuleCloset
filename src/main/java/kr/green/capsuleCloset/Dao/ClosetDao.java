@@ -26,6 +26,13 @@ public interface ClosetDao {
 	ArrayList<FileVo> getOuter(@Param("id")String id, @Param("clothes")String clothes);
 
 	ArrayList<FileVo> getShoes(@Param("id")String id, @Param("clothes")String clothes);
+
+	ArrayList<ClosetVo> getClosetVo();
+
+	String getRegisterdate(@Param("id")String id);
+
+	ClosetVo getCloset2(@Param("closetNum")Integer closetNum);
+
 	
 
 

@@ -23,6 +23,8 @@ My Closet
 			</div>
 	
 			<div class="group2">
+			  <label for="title">Title:</label>
+			  <input type="text" class="form-control" id="title" name="title">
 			  <label for="goal">Goal:</label>
 			  <input type="number" class="form-control" id="goal" value="setGoal" readonly>
 			  <label for="top">Top:</label>
