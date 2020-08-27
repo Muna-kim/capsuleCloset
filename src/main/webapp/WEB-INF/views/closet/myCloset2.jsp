@@ -32,7 +32,6 @@
 		display:block;
 	}
 	#preview{
-		border: 1px solid red;
 		width:100%;
 		height:100%;
 		display:block;
@@ -97,9 +96,10 @@
 			 	
 		 	<c:forEach begin="1" end="${closet.bottom-fileBottom.size()}">
 		 		<div class=small-box>
-		 		<input type="file" name="file3" id="file" multiple>
-		 		<i id="icon-plus" class="fas fa-plus"></i>
-		        <div class="preview"></div></div>
+		 		<input type="file" class="file" name="file3" id="file" multiple>
+		        <div class="preview"></div>
+		 		<i id="icon-plus" class="icon-plus fas fa-plus"></i>
+		 		</div>
 		 	</c:forEach>
 		 	</div>
 		 	
@@ -114,9 +114,9 @@
 		 	
 		 	<c:forEach begin="1" end="${closet.outer-fileOuter.size()}">
 		 		<div class=small-box>
-		 		<input type="file" name="file4" id="file" multiple>
-		 		<i id="icon-plus" class="fas fa-plus"></i>
+		 		<input type="file" class="file" name="file4" id="file" multiple>
 		        <div class="preview"></div>
+		 		<i id="icon-plus" class="icon-plus fas fa-plus"></i>
 		        </div>
 		 	</c:forEach>
 		 	</div>
@@ -131,9 +131,9 @@
 			 	</c:forEach>
 		 	<c:forEach begin="1" end="${closet.shoes-fileShoes.size()}">
 		 		<div class=small-box>
-		 		<input type="file" name="file5" id="file" multiple>
-		 		<i id="icon-plus" class="fas fa-plus"></i>
+		 		<input type="file" class="file" name="file5" id="file" multiple>
 		        <div class="preview"></div>
+		 		<i id="icon-plus" class="icon-plus fas fa-plus"></i>
 		        </div>
 		 	</c:forEach>
 		 	</div>
@@ -197,14 +197,14 @@
 	        }
 	        
 	        //div에 이미지 추가
-	        var str = '<div style="display: inline-flex; padding: 0px; "><li>';
+	        var str = '<div style="width:100%;height:100%;display: inline-flex; padding: 0px; "><li>';
 	        
 	        //이미지 파일 미리보기
 	        if(f.type.match('image.*')){
 	          var reader = new FileReader(); //파일을 읽기 위한 FileReader객체 생성
 	          reader.onload = function (e) { //파일 읽어들이기를 성공했을때 호출되는 이벤트 핸들러
 	            //str += '<button type="button" class="delBtn" value="'+f.name+'" style="background: red">x</button><br>';
-	            str += '<img src="'+e.target.result+'" title="'+f.name+'" width="100%" height="148px" />';
+	            str += '<img src="'+e.target.result+'" title="'+f.name+'" width="100%" height="100%" />';
 	            str += '</li></div>';
 	            //$(str).appendTo('#preview');
 		         target.append(str);

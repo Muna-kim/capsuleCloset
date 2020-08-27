@@ -30,13 +30,7 @@
 		display:block;
 
 	}
-	#preview{
-		border: 1px solid red;
-		width:100%;
-		height:100%;
-		display:block;
-		max-width: 100%;
-	}
+	
 	.small-box>img{
 		width:100%;
 		height:100%;
@@ -45,16 +39,33 @@
 		width:710px;
 		
 	}
+	.small-box>img:hover{
+		border:2px solid rgb(242, 222, 195);
+		cursor:pointer;
+
+	}
+	.coordinate{
+		border:1px solid white;
+		width: 284px;
+		height: 362px;
+		position:fixed;
+		margin-left: 750px;
+		top: 100px;
+	}
+	.coordinate img{
+		width:100%;
+		height:100%;
+	}
 </style>
 <body>
  My Closet
 		 	<div>Top</div>
 		 	<div class="bigBox">
-			 	
-			 	<div class="after">
+			 	<div class="after top">
 			 	<c:forEach var="tmp" items="${fileTop}">
+			 		<input type="hidden" value="${tmp.fileTableNum }" name="fileTabeNum">
 			 		<div class=small-box >
-					<img src="<%=request.getContextPath()%>/resources/image${tmp.file}">
+					<img src="<%=request.getContextPath()%>/resources/image${tmp.file}" class=small-img>
 			        <div class="preview"></div>
 			 		</div>
 			 	</c:forEach>
@@ -62,17 +73,20 @@
 			 	
 				
 			 	<div>Bottom</div>
-			 	<div class="after">
+			 	<div class="after bottom">
 			 	<c:forEach var="tmp" items="${fileBottom}">
+			 		<input type="hidden" value="${tmp.fileTableNum}" name="fileTabeNum">
 			 		<div class=small-box>
 			 		<img src="<%=request.getContextPath()%>/resources/image${tmp.file}">
-			        <div class="preview"></div></div>
+			        <div class="preview"></div>
+			        </div>
 			 	</c:forEach>
 			 	</div>
 			 	
 			 	<div>Outer</div>
-			 	<div class="after">
+			 	<div class="after outer">
 			 	<c:forEach var="tmp" items="${fileOuter}">
+			 		<input type="hidden" value="${tmp.fileTableNum }" name="fileTabeNum">
 			 		<div class=small-box>
 			 		<img src="<%=request.getContextPath()%>/resources/image${tmp.file}">
 			        <div class="preview"></div>
@@ -81,8 +95,9 @@
 			 	</div>
 			 	
 			 	<div>shoes</div>
-			 	<div class="after">
+			 	<div class="after shoes">
 			 	<c:forEach var="tmp" items="${fileShoes}">
+			 		<input type="hidden" value="${tmp.fileTableNum }" name="fileTabeNum">
 			 		<div class=small-box>
 			 		<img src="<%=request.getContextPath()%>/resources/image${tmp.file}">
 			        <div class="preview"></div>
@@ -94,6 +109,15 @@
 		 	<c:if test="${closetNum==null}">
 		 	<a href="<%=request.getContextPath()%>"><button class="btn btn-outline-secondary">내 옷장 리셋하기</button></a>
 		 	</c:if>
+		 	<form method="post" action="">
+			 	<div class=coordinate>
+				 		<div class="small-box top"></div>
+				 		<div class="small-box outer"></div>
+				 		<div class="small-box bottom"></div>
+				 		<div class="small-box shoes"></div>
+				 		<button type="submit" class="btn btn-outline-secondary">오늘의 옷 등록</button>
+				 </div>
+			 </form>
  	<script type="text/javascript">
 	  $(document).ready(function (e){
 	    $("input[type='file']").change(function(e){
@@ -165,6 +189,17 @@
 	        }
 	      });//arr.forEach
 	    }
+	    $('.small-box').click(function(){
+			var parents = $(this).parent().attr('class');
+			var position = parents.split(' ')[1];
+			var str = $(this).html();
+			str += '<input type="hidden" value="'+$(this).prev().val()+'"name="todays'+position+'">';
+			
+			$('.coordinate').find('.'+position).html(str)
+			
+			$('.coordinate').find('.'+position).find('.preview').remove()
+			
+	    })
 	  });
 	</script>
  

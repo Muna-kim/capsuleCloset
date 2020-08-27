@@ -2,6 +2,7 @@ package kr.green.capsuleCloset.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -17,6 +18,7 @@ import kr.green.capsuleCloset.service.UserService;
 import kr.green.capsuleCloset.utils.UploadFileUtils;
 import kr.green.capsuleCloset.vo.ClosetVo;
 import kr.green.capsuleCloset.vo.FileVo;
+import kr.green.capsuleCloset.vo.TodaysClothesVo;
 import kr.green.capsuleCloset.vo.UserVo;
 
 @Controller
@@ -191,6 +193,15 @@ public class ClosetController {
 	    return mv;
 	}
 	
+	@RequestMapping(value="/myCloset3" , method=RequestMethod.POST)
+	public ModelAndView myCloset3Post(ModelAndView mv,TodaysClothesVo todaysClothesVo,HttpServletRequest r) {
+		UserVo user= userService.getUser(r);
+		closetService.setTodaysClothes(todaysClothesVo,user.getId());
+		mv.setViewName("redirect:/todaysClothes");
+		
+		return mv;
+	}
+	
 	@RequestMapping(value="/othersCloset" , method=RequestMethod.GET)
 	public ModelAndView othersClosetGet(ModelAndView mv,HttpServletRequest r) {
 			UserVo user= userService.getUser(r);
@@ -200,7 +211,6 @@ public class ClosetController {
 	    	
 	    	if(user != null) {
 		    	ClosetVo closet=closetService.getCloset(user.getId());
-		    	
 		    	mv.addObject("closet",closet);
 	    	}
 	    	
@@ -210,8 +220,11 @@ public class ClosetController {
 
 	@RequestMapping(value="/todaysClothes" , method=RequestMethod.GET)
 	public ModelAndView todaysclothesGet(ModelAndView mv) {
+	    	ArrayList<TodaysClothesVo> todaysClothesVo=closetService.getTodaysClothes();
+	    	mv.addObject("todaysClothesVo", todaysClothesVo);
+	    	ArrayList<FileVo> fileVo=closetService.getFileVo();
+	    	mv.addObject("fileVo",fileVo);
 	    	mv.setViewName("/closet/todaysClothes");
 	    return mv;
 	}
-	
 }

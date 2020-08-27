@@ -1,11 +1,14 @@
 package kr.green.capsuleCloset.dao;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import org.apache.ibatis.annotations.Param;
 
 import kr.green.capsuleCloset.vo.ClosetVo;
 import kr.green.capsuleCloset.vo.FileVo;
+import kr.green.capsuleCloset.vo.TodaysClothesVo;
+import kr.green.capsuleCloset.vo.UserVo;
 
 public interface ClosetDao {
 
@@ -32,6 +35,13 @@ public interface ClosetDao {
 	String getRegisterdate(@Param("id")String id);
 
 	ClosetVo getCloset2(@Param("closetNum")Integer closetNum);
+
+	void setTodaysClothes(@Param("todaysClothesVo")TodaysClothesVo todaysClothesVo,@Param("id") String id);
+
+	ArrayList<TodaysClothesVo> getTodaysClothes();
+
+	ArrayList<FileVo> getFileVo();
+
 
 	
 

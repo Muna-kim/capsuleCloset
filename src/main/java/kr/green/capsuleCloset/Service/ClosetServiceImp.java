@@ -1,6 +1,7 @@
 package kr.green.capsuleCloset.service;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 import kr.green.capsuleCloset.dao.ClosetDao;
 import kr.green.capsuleCloset.vo.ClosetVo;
 import kr.green.capsuleCloset.vo.FileVo;
+import kr.green.capsuleCloset.vo.TodaysClothesVo;
 import kr.green.capsuleCloset.vo.UserVo;
 
 @Service
@@ -70,6 +72,23 @@ public class ClosetServiceImp implements ClosetService {
 	public ClosetVo getCloset2(Integer closetNum) {
 		return closetDao.getCloset2(closetNum);
 	}
+
+	@Override
+	public void setTodaysClothes(TodaysClothesVo todaysClothesVo,String id) {
+		closetDao.setTodaysClothes(todaysClothesVo,id);
+	}
+
+	@Override
+	public ArrayList<TodaysClothesVo> getTodaysClothes() {
+		return closetDao.getTodaysClothes();
+	}
+
+	@Override
+	public ArrayList<FileVo> getFileVo() {
+		return closetDao.getFileVo();
+	}
+
+
 
 
 
