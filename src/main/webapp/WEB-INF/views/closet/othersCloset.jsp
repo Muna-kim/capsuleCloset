@@ -25,13 +25,13 @@
 	margin-bottom:1px;
 	}
 	.small-box>img{
-	border:1px solid red;
+	border:1px solid white;
 	width: 178px;
 	height:198px;
 	float:none;
 	}
 	.small-box2{
-	border:1px solid yellow;
+	border:1px solid white;
 	width: 178px;
 	height:60px;
 	float:none;
@@ -46,7 +46,7 @@
 	.bigBox{
 		width:910px;
 		height:100%;
-		border: 1px solid blue;
+		border: 1px solid white;
 		
 	}
 </style>
@@ -58,7 +58,7 @@
 				 			<img src="">
 					 		<div class=small-box2 style="line-height:20px;">
 					 			<a href="<%=request.getContextPath()%>/myCloset3?closetNum=${tmp.closetNum}" style="font-size:18px; font-weight:bold; color:black;"> ${tmp.title}</a>
-					 			<div style="color:black; font-size:18px;"> ${tmp.id}</div>
+					 			<div style="color:black; font-size:18px;"> ID: ${tmp.id} (목표:${tmp.setGoal})</div>
 					 			<div style="font-size:15px; color:gray;"> ${tmp.registerdate}</div>
 					 		</div>
 				 		</div>

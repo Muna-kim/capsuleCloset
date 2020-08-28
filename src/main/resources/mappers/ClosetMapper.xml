@@ -59,4 +59,21 @@
   <select id="getFileVo" resultType="kr.green.capsuleCloset.vo.FileVo">
   select * from capsulecloset.file
   </select>
+  
+  <select id="getFile" resultType="kr.green.capsuleCloset.vo.FileVo">
+  select * from capsulecloset.file
+  </select>
+  
+  <delete id="setDelCloset">
+  delete from myCloset where id=#{id} 
+  </delete>
+  
+  <update id="setDelFile">
+  update file
+  set	del = 'Y'
+  where id=#{id}
+  </update>
+  
+
+  
 </mapper>

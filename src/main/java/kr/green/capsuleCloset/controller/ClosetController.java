@@ -98,63 +98,65 @@ public class ClosetController {
 	@RequestMapping(value="/myCloset2" , method=RequestMethod.POST)
 	public ModelAndView myCloset2Post(ModelAndView mv,FileVo fileVo,MultipartFile [] file2,MultipartFile [] file3,MultipartFile [] file4,MultipartFile [] file5,HttpServletRequest r) throws IOException, Exception {
 		UserVo user= userService.getUser(r);
-		if(file2 != null) {
-			System.out.println(file2.length);
-			for(MultipartFile tmp : file2) {
-				if(tmp.getOriginalFilename().length() > 0) {
-				String fileName=UploadFileUtils.uploadFile(uploadPath, tmp.getOriginalFilename(), tmp.getBytes());
-				System.out.println(fileName);
-				fileVo.setFile(fileName);
-				fileVo.setClothes("top");
-				closetService.registerFile(fileVo,user.getId());
-				System.out.println(fileVo);
-				
+			if(file2 != null) {
+				System.out.println(file2.length);
+				for(MultipartFile tmp : file2) {
+					if(tmp.getOriginalFilename().length() > 0) {
+					String fileName=UploadFileUtils.uploadFile(uploadPath, tmp.getOriginalFilename(), tmp.getBytes());
+					System.out.println(fileName);
+					fileVo.setFile(fileName);
+					fileVo.setClothes("top");
+					closetService.registerFile(fileVo,user.getId());
+					System.out.println(fileVo);
+					
+					}
 				}
 			}
-		}
-		if(file3 != null) {
-			for(MultipartFile tmp : file3) {
-				if(tmp.getOriginalFilename().length() > 0) {
-				String fileName=UploadFileUtils.uploadFile(uploadPath, tmp.getOriginalFilename(), tmp.getBytes());
-				System.out.println(fileName);
-				fileVo.setFile(fileName);
-				fileVo.setClothes("bottom");
-				closetService.registerFile(fileVo,user.getId());
-				System.out.println(fileVo);
+			if(file3 != null) {
+				for(MultipartFile tmp : file3) {
+					if(tmp.getOriginalFilename().length() > 0) {
+					String fileName=UploadFileUtils.uploadFile(uploadPath, tmp.getOriginalFilename(), tmp.getBytes());
+					System.out.println(fileName);
+					fileVo.setFile(fileName);
+					fileVo.setClothes("bottom");
+					closetService.registerFile(fileVo,user.getId());
+					System.out.println(fileVo);
+					}
 				}
 			}
-		}
-		if(file4 != null) {
-			for(MultipartFile tmp : file4) {
-				if(tmp.getOriginalFilename().length() > 0) {
-				String fileName=UploadFileUtils.uploadFile(uploadPath, tmp.getOriginalFilename(), tmp.getBytes());
-				System.out.println(fileName);
-				fileVo.setFile(fileName);
-				fileVo.setClothes("outer");
-				closetService.registerFile(fileVo,user.getId());
-				System.out.println(fileVo);
+			if(file4 != null) {
+				for(MultipartFile tmp : file4) {
+					if(tmp.getOriginalFilename().length() > 0) {
+					String fileName=UploadFileUtils.uploadFile(uploadPath, tmp.getOriginalFilename(), tmp.getBytes());
+					System.out.println(fileName);
+					fileVo.setFile(fileName);
+					fileVo.setClothes("outer");
+					closetService.registerFile(fileVo,user.getId());
+					System.out.println(fileVo);
+					}
 				}
 			}
-		}
-		if(file5 != null) {
-			for(MultipartFile tmp : file5) {
-				if(tmp.getOriginalFilename().length() > 0) {
-				String fileName=UploadFileUtils.uploadFile(uploadPath, tmp.getOriginalFilename(), tmp.getBytes());
-				System.out.println(fileName);
-				fileVo.setFile(fileName);
-				fileVo.setClothes("shoes");
-				closetService.registerFile(fileVo,user.getId());
-				System.out.println(fileVo);
+			if(file5 != null) {
+				for(MultipartFile tmp : file5) {
+					if(tmp.getOriginalFilename().length() > 0) {
+					String fileName=UploadFileUtils.uploadFile(uploadPath, tmp.getOriginalFilename(), tmp.getBytes());
+					System.out.println(fileName);
+					fileVo.setFile(fileName);
+					fileVo.setClothes("shoes");
+					closetService.registerFile(fileVo,user.getId());
+					System.out.println(fileVo);
+					}
 				}
-			}
 		}
 		mv.setViewName("redirect:/myCloset3");
+		mv.addObject("fileVo",fileVo);
 		return mv;
 	}
 	
 
 	@RequestMapping(value="/myCloset3" , method=RequestMethod.GET)
 	public ModelAndView myCloset3Get(ModelAndView mv,HttpServletRequest r,Integer closetNum) {
+		UserVo user= userService.getUser(r);
 		mv.setViewName("/closet/myCloset3");
 		ArrayList<FileVo> fileTop = null;
 		ArrayList<FileVo> fileBottom = null;
@@ -162,7 +164,7 @@ public class ClosetController {
 		ArrayList<FileVo> fileShoes = null;
 		ClosetVo closet = null;
 		if(closetNum == null) {
-			UserVo user= userService.getUser(r);
+//			UserVo user= userService.getUser(r);
 			closet = closetService.getCloset(user.getId());
 			
 			fileTop=closetService.getTop(user.getId(),"top");
@@ -190,17 +192,32 @@ public class ClosetController {
 		mv.addObject("fileOuter", fileOuter);
 		mv.addObject("fileShoes", fileShoes);
 	    	
+		
+		ArrayList<FileVo> fileVo=closetService.getFileVo();
+    	mv.addObject("fileVo",fileVo);
+		
 	    return mv;
 	}
 	
 	@RequestMapping(value="/myCloset3" , method=RequestMethod.POST)
 	public ModelAndView myCloset3Post(ModelAndView mv,TodaysClothesVo todaysClothesVo,HttpServletRequest r) {
 		UserVo user= userService.getUser(r);
-		closetService.setTodaysClothes(todaysClothesVo,user.getId());
-		mv.setViewName("redirect:/todaysClothes");
-		
+	
+			closetService.setTodaysClothes(todaysClothesVo,user.getId());
+			mv.setViewName("redirect:/myTodays");
+			return mv;
+	}
+	
+	@RequestMapping(value="/myCloset4" , method=RequestMethod.POST)
+	public ModelAndView myCloset4Post(ModelAndView mv,HttpServletRequest r) {
+		UserVo user= userService.getUser(r);
+		closetService.setDelCloset(user.id);
+		closetService.setDelFile(user.id);
+		mv.setViewName("redirect:/myCloset");
 		return mv;
 	}
+	
+	
 	
 	@RequestMapping(value="/othersCloset" , method=RequestMethod.GET)
 	public ModelAndView othersClosetGet(ModelAndView mv,HttpServletRequest r) {
@@ -218,13 +235,30 @@ public class ClosetController {
 	}
 	
 
-	@RequestMapping(value="/todaysClothes" , method=RequestMethod.GET)
-	public ModelAndView todaysclothesGet(ModelAndView mv) {
+	@RequestMapping(value="/othersToday" , method=RequestMethod.GET)
+	public ModelAndView othersTodayGet(ModelAndView mv) {
 	    	ArrayList<TodaysClothesVo> todaysClothesVo=closetService.getTodaysClothes();
 	    	mv.addObject("todaysClothesVo", todaysClothesVo);
 	    	ArrayList<FileVo> fileVo=closetService.getFileVo();
 	    	mv.addObject("fileVo",fileVo);
-	    	mv.setViewName("/closet/todaysClothes");
+	    	
+	    	mv.setViewName("/closet/othersToday");
 	    return mv;
 	}
+	
+	
+
+	@RequestMapping(value="/myTodays" , method=RequestMethod.GET)
+	public ModelAndView myTodaysGet(ModelAndView mv,HttpServletRequest r) {
+			UserVo user= userService.getUser(r);
+			mv.addObject("user", user);
+	    	ArrayList<TodaysClothesVo> todaysClothesVo=closetService.getTodaysClothes();
+	    	mv.addObject("todaysClothesVo", todaysClothesVo);
+	    	ArrayList<FileVo> fileVo=closetService.getFileVo();
+	    	mv.addObject("fileVo",fileVo);
+	    	mv.setViewName("/closet/myTodays");
+	    return mv;
+	}
+	
+
 }

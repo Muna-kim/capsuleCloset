@@ -78,6 +78,14 @@ public class ClosetServiceImp implements ClosetService {
 		closetDao.setTodaysClothes(todaysClothesVo,id);
 	}
 
+//	@Override
+//	public void setTodaysClothes(TodaysClothesVo todaysClothesVo,String id) {
+//		FileVo fileTop = closetDao.getFile(todaysClothesVo.getTodaystop());
+//		FileVo fileBottom = closetDao.getFile(todaysClothesVo.getTodaysbottom()());
+//		closetDao.setTodaysClothes(fileTop);
+//		
+//	}
+	
 	@Override
 	public ArrayList<TodaysClothesVo> getTodaysClothes() {
 		return closetDao.getTodaysClothes();
@@ -87,6 +95,21 @@ public class ClosetServiceImp implements ClosetService {
 	public ArrayList<FileVo> getFileVo() {
 		return closetDao.getFileVo();
 	}
+
+
+	@Override
+	public void setDelCloset(String id) {
+		closetDao.setDelCloset(id);
+	}
+
+	@Override
+	public void setDelFile(String id) {
+		closetDao.setDelFile(id);
+	}
+
+
+
+
 
 
 

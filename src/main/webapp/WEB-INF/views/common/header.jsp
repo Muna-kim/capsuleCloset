@@ -19,7 +19,7 @@
 		        	<a class="nav-link" href="<%=request.getContextPath()%>/othersCloset">OthersCloset</a>
 		      	</li>
 		      	<li class="nav-item">
-		        	<a class="nav-link" href="<%=request.getContextPath()%>/todaysClothes">TodaysClothes</a>
+		        	<a class="nav-link" href="<%=request.getContextPath()%>/othersToday">OthersToday</a>
 		      	</li>
 		      	<c:if test="${user==null}">
 		      	<li class="nav-item">

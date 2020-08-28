@@ -42,6 +42,12 @@ public interface ClosetDao {
 
 	ArrayList<FileVo> getFileVo();
 
+	void setDelCloset(@Param("id")String id);
+
+	void setDelFile(@Param("id")String id);
+
+
+
 
 	
 

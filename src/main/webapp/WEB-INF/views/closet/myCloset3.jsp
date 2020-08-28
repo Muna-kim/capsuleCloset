@@ -105,9 +105,11 @@
 			 	</c:forEach>
 			 	</div>
 		 	</div>
-		 	<a href="<%=request.getContextPath()%>/todaysClothes"><button class="btn btn-outline-secondary">오늘의 옷</button></a>
+		 	<a href="<%=request.getContextPath()%>/myTodays"><button class="btn btn-outline-secondary">나의 오늘의 옷</button></a>
 		 	<c:if test="${closetNum==null}">
-		 	<a href="<%=request.getContextPath()%>"><button class="btn btn-outline-secondary">내 옷장 리셋하기</button></a>
+		 	<form method="post" action="<%=request.getContextPath()%>/myCloset4">
+		 	<button type="submit" class="btn btn-outline-danger">내 옷장 리셋하기</button>
+		 	</form>
 		 	</c:if>
 		 	<form method="post" action="">
 			 	<div class=coordinate>
@@ -115,7 +117,8 @@
 				 		<div class="small-box outer"></div>
 				 		<div class="small-box bottom"></div>
 				 		<div class="small-box shoes"></div>
-				 		<button type="submit" class="btn btn-outline-secondary">오늘의 옷 등록</button>
+						
+				 		<button type="submit" class="btn btn btn-secondary">오늘의 옷 등록</button>
 				 </div>
 			 </form>
  	<script type="text/javascript">

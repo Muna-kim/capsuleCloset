@@ -36,6 +36,11 @@ public interface ClosetService {
 
 	ArrayList<FileVo> getFileVo();
 
+	void setDelCloset(String id);
+
+	void setDelFile(String id);
+
+
 
 
 

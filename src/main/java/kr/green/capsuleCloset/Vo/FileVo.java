@@ -5,6 +5,7 @@ public class FileVo {
 	String id;
 	String clothes;
 	String file;
+	String del;
 	
 	public int getFileTableNum() {
 		return fileTableNum;
@@ -30,11 +31,19 @@ public class FileVo {
 	public void setFile(String file) {
 		this.file = file;
 	}
+	
+	
+	public String getDel() {
+		return del;
+	}
+	public void setDel(String del) {
+		this.del = del;
+	}
 	@Override
 	public String toString() {
-		return "FileVo [fileTableNum=" + fileTableNum + ", id=" + id + ", clothes=" + clothes + ", file=" + file + "]";
+		return "FileVo [fileTableNum=" + fileTableNum + ", id=" + id + ", clothes=" + clothes + ", file=" + file
+				+ ", del=" + del + "]";
 	}
-	
 	
 	
 	

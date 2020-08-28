@@ -69,14 +69,18 @@
 		 	
 		 	<c:forEach var="tmp" items="${fileTop}">
 			 		<div class=small-box >
+			 		<c:if test="${fileVo.del=='N'}">
 					<img src="<%=request.getContextPath()%>/resources/image${tmp.file}">
+					</c:if>
 			        <div class="preview"></div>
 			 		</div>
 			 	</c:forEach>
 		 	
 		 	<c:forEach begin="1" end="${closet.top-fileTop.size()}">
 		 		<div class=small-box>
+		 		<c:if test="${fileVo.del!='N'}">
 		 		<input type="file" class="file" name="file2" id="file" multiple>
+		 		</c:if>
 		        <div class="preview"></div>
 		 		<i id="icon-plus" class="icon-plus fas fa-plus"></i>
 		 		</div>
@@ -138,7 +142,7 @@
 		 	</c:forEach>
 		 	</div>
 		 </div>
-		 	<button type="submit" class="btn btn-outline-secondary">옷장 저장하기</button>
+		 	<button type="submit" class="btn btn-secondary">옷장 저장하기</button>
 		 	<a href="<%=request.getContextPath()%>/myCloset3"><button type="button" class="btn btn-outline-secondary">내옷장보기</button></a>
 	 </form>
  	<script type="text/javascript">
