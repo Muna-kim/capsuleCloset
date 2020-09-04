@@ -2,7 +2,6 @@ package kr.green.capsuleCloset.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -18,6 +17,7 @@ import kr.green.capsuleCloset.service.UserService;
 import kr.green.capsuleCloset.utils.UploadFileUtils;
 import kr.green.capsuleCloset.vo.ClosetVo;
 import kr.green.capsuleCloset.vo.FileVo;
+import kr.green.capsuleCloset.vo.MainPhotoVo;
 import kr.green.capsuleCloset.vo.TodaysClothesVo;
 import kr.green.capsuleCloset.vo.UserVo;
 
@@ -59,9 +59,9 @@ public class ClosetController {
 	@RequestMapping(value="/myCloset" , method=RequestMethod.POST)
 	public ModelAndView myClosetPost(ModelAndView mv,ClosetVo closetVo,HttpServletRequest r) {
 			UserVo user = userService.getUser(r);
-			closetVo.setId(user.getId());
-			closetService.setCloset(closetVo);
-	    	mv.setViewName("redirect:/myCloset2");
+				closetVo.setId(user.getId());
+				closetService.setCloset(closetVo);
+				mv.setViewName("redirect:/myCloset2");
 	    	return mv;
 	}
 	@RequestMapping(value="/myCloset2" , method=RequestMethod.GET)
@@ -71,27 +71,30 @@ public class ClosetController {
 //			c.setSetGoal(60);
 //			c.setTop(7);
 //			mv.addObject("closet", c);
-			ClosetVo closet = closetService.getCloset(user.getId());
-			mv.addObject("closet",closet);
-	    	mv.setViewName("/closet/myCloset2");
-	    	
-	    	ArrayList<FileVo> fileTop=closetService.getTop(user.getId(),"top");
-	    	mv.addObject("fileTop", fileTop);
-
-	    	ArrayList<FileVo> fileBottom=closetService.getBottom(user.getId(),"bottom");
-	    	mv.addObject("fileBottom", fileBottom);
-	    	
-	    	ArrayList<FileVo> fileOuter=closetService.getOuter(user.getId(),"outer");
-	    	mv.addObject("fileOuter", fileOuter);
-	    	
-	    	ArrayList<FileVo> fileShoes=closetService.getShoes(user.getId(),"shoes");
-	    	mv.addObject("fileShoes", fileShoes);
-	    	
-	    	String registerdate=closetService.getRegisterdate(user.getId());
-	    	mv.addObject("registerdate",registerdate);
-	    	
-	    	System.out.println(user);
-	    	System.out.println(closet);
+			if(user!=null) {
+				ClosetVo closet = closetService.getCloset(user.getId());
+				mv.addObject("closet",closet);
+				mv.setViewName("/closet/myCloset2");
+				
+				ArrayList<FileVo> fileTop=closetService.getTop(user.getId(),"top");
+				mv.addObject("fileTop", fileTop);
+				
+				ArrayList<FileVo> fileBottom=closetService.getBottom(user.getId(),"bottom");
+				mv.addObject("fileBottom", fileBottom);
+				
+				ArrayList<FileVo> fileOuter=closetService.getOuter(user.getId(),"outer");
+				mv.addObject("fileOuter", fileOuter);
+				
+				ArrayList<FileVo> fileShoes=closetService.getShoes(user.getId(),"shoes");
+				mv.addObject("fileShoes", fileShoes);
+				
+				String registerdate=closetService.getRegisterdate(user.getId());
+				mv.addObject("registerdate",registerdate);
+				
+			}
+			else {
+				mv.setViewName("/closet/myCloset");
+			}
 	    return mv;
 	}
 
@@ -157,45 +160,49 @@ public class ClosetController {
 	@RequestMapping(value="/myCloset3" , method=RequestMethod.GET)
 	public ModelAndView myCloset3Get(ModelAndView mv,HttpServletRequest r,Integer closetNum) {
 		UserVo user= userService.getUser(r);
-		mv.setViewName("/closet/myCloset3");
-		ArrayList<FileVo> fileTop = null;
-		ArrayList<FileVo> fileBottom = null;
-		ArrayList<FileVo> fileOuter = null;
-		ArrayList<FileVo> fileShoes = null;
-		ClosetVo closet = null;
-		if(closetNum == null) {
-//			UserVo user= userService.getUser(r);
-			closet = closetService.getCloset(user.getId());
+		if(user!=null) {
+			mv.setViewName("/closet/myCloset3");
+			ArrayList<FileVo> fileTop = null;
+			ArrayList<FileVo> fileBottom = null;
+			ArrayList<FileVo> fileOuter = null;
+			ArrayList<FileVo> fileShoes = null;
+			ClosetVo closet = null;
+			if(closetNum == null) {
+				closet = closetService.getCloset(user.getId());
+				
+				fileTop=closetService.getTop(user.getId(),"top");
+				
+				fileBottom=closetService.getBottom(user.getId(),"bottom");
+				
+				fileOuter=closetService.getOuter(user.getId(),"outer");
+				
+				fileShoes=closetService.getShoes(user.getId(),"shoes");
+			}else {
+				closet = closetService.getCloset2(closetNum);
+				
+				fileTop=closetService.getTop(closet.getId(),"top");
+				
+				fileBottom=closetService.getBottom(closet.getId(),"bottom");
+				
+				fileOuter=closetService.getOuter(closet.getId(),"outer");
+				
+				fileShoes=closetService.getShoes(closet.getId(),"shoes");
+			}
 			
-			fileTop=closetService.getTop(user.getId(),"top");
-	    	
-	    	fileBottom=closetService.getBottom(user.getId(),"bottom");
-	    	
-	    	fileOuter=closetService.getOuter(user.getId(),"outer");
-	    	
-	    	fileShoes=closetService.getShoes(user.getId(),"shoes");
-		}else {
-			closet = closetService.getCloset2(closetNum);
+			mv.addObject("closet",closet);
+			mv.addObject("fileTop", fileTop);
+			mv.addObject("fileBottom", fileBottom);
+			mv.addObject("fileOuter", fileOuter);
+			mv.addObject("fileShoes", fileShoes);
+			mv.addObject("user", user);
 			
-			fileTop=closetService.getTop(closet.getId(),"top");
-	    	
-	    	fileBottom=closetService.getBottom(closet.getId(),"bottom");
-	    	
-	    	fileOuter=closetService.getOuter(closet.getId(),"outer");
-	    	
-	    	fileShoes=closetService.getShoes(closet.getId(),"shoes");
+			
+			ArrayList<FileVo> fileVo=closetService.getFileVo();
+			mv.addObject("fileVo",fileVo);
 		}
-	    	
-		mv.addObject("closet",closet);
-		mv.addObject("fileTop", fileTop);
-		mv.addObject("fileBottom", fileBottom);
-		mv.addObject("fileOuter", fileOuter);
-		mv.addObject("fileShoes", fileShoes);
-	    	
-		
-		ArrayList<FileVo> fileVo=closetService.getFileVo();
-    	mv.addObject("fileVo",fileVo);
-		
+		else {
+			mv.setViewName("/closet/myCloset");
+		}
 	    return mv;
 	}
 	
@@ -225,11 +232,25 @@ public class ClosetController {
 			mv.setViewName("/closet/othersCloset");
 	    	ArrayList<ClosetVo> closetVo=closetService.getClosetVo();
 	    	mv.addObject("closetVo", closetVo);
+	    	System.out.println(closetVo);
+	    	
 	    	
 	    	if(user != null) {
 		    	ClosetVo closet=closetService.getCloset(user.getId());
 		    	mv.addObject("closet",closet);
 	    	}
+	    	
+	    	ArrayList<MainPhotoVo> mainPhotoVoList=closetService.getMainPhotoVo();
+	    	System.out.println(mainPhotoVoList);
+	    	mv.addObject("mainPhotoVoList", mainPhotoVoList);
+	    	
+	    			
+//	    	ArrayList<FileVo> fileList = closetService.getFileVo2(mainPhotoVo);
+//	    	System.out.println(fileList);
+//	    	
+	    	ArrayList<FileVo> fileList = closetService.getFileVo3();
+	    	mv.addObject("fileList", fileList);
+	    	System.out.println(fileList);
 	    	
 	    return mv;
 	}
@@ -239,6 +260,7 @@ public class ClosetController {
 	public ModelAndView othersTodayGet(ModelAndView mv) {
 	    	ArrayList<TodaysClothesVo> todaysClothesVo=closetService.getTodaysClothes();
 	    	mv.addObject("todaysClothesVo", todaysClothesVo);
+	    		    		    	
 	    	ArrayList<FileVo> fileVo=closetService.getFileVo();
 	    	mv.addObject("fileVo",fileVo);
 	    	
@@ -258,6 +280,15 @@ public class ClosetController {
 	    	mv.addObject("fileVo",fileVo);
 	    	mv.setViewName("/closet/myTodays");
 	    return mv;
+	}
+	@RequestMapping(value="/myTodays", method=RequestMethod.POST)
+	public ModelAndView myTodaysPost(ModelAndView mv,TodaysClothesVo todaysClothesVo) {
+			TodaysClothesVo todaysClothes = closetService.getToday(todaysClothesVo.numToday);
+			System.out.println(todaysClothes);
+			closetService.setMainPhoto(todaysClothes);
+			
+			mv.setViewName("redirect:/othersCloset");
+		return mv;
 	}
 	
 

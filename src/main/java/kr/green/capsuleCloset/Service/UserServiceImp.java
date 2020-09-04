@@ -19,9 +19,14 @@ public class UserServiceImp implements UserService {
 	
 	@Override
 	public void signup(UserVo userVo) {
-		String encPw=passwordEncoder.encode(userVo.getPw());
-        userVo.setPw(encPw);
+		if(userVo.id!=null) {
+			String encPw=passwordEncoder.encode(userVo.getPw());
+			userVo.setPw(encPw);
+		}
+        
+        
 		userDao.signup(userVo);
+
 	}
 
 	@Override

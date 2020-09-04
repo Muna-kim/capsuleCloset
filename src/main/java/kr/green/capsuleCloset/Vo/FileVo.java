@@ -1,11 +1,11 @@
 package kr.green.capsuleCloset.vo;
 
 public class FileVo {
-	int fileTableNum;
-	String id;
-	String clothes;
-	String file;
-	String del;
+	public int fileTableNum;
+	public String id;
+	public String clothes;
+	public String file;
+	public String del;
 	
 	public int getFileTableNum() {
 		return fileTableNum;
@@ -31,7 +31,6 @@ public class FileVo {
 	public void setFile(String file) {
 		this.file = file;
 	}
-	
 	
 	public String getDel() {
 		return del;

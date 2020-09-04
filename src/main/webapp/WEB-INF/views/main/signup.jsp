@@ -1,17 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-<form method="post" action="">
+
+<form method="post" action="<%=request.getContextPath()%>/signup">
 	<div class="form-group">
 	  <label for="id">ID :</label>
+	  <div>
+	  
 	  <input type="text" class="form-control" id="id" name="id">
+	  </div>
 	</div>
+	
 	<div class="form-group">
 	  <label for="pw">PASSWORD :</label>
 	  <input type="password" class="form-control" id="pw" name="pw">
@@ -41,5 +39,3 @@
 	</div>
 	<button type="submit" class="btn btn-outline-secondary">submit</button>
 </form>
-</body>
-</html>

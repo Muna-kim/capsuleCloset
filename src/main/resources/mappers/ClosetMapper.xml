@@ -19,19 +19,19 @@
   </insert>
   
   <select id="getTop" resultType="kr.green.capsuleCloset.vo.FileVo">
-  select * from capsulecloset.file where id=#{id} and clothes=#{clothes}
+  select * from capsulecloset.file where id=#{id} and clothes=#{clothes} and del='N'
   </select>
   
   <select id="getBottom" resultType="kr.green.capsuleCloset.vo.FileVo">
-  select * from capsulecloset.file where id=#{id} and clothes=#{clothes}
+  select * from capsulecloset.file where id=#{id} and clothes=#{clothes} and del='N'
   </select>
   
   <select id="getOuter" resultType="kr.green.capsuleCloset.vo.FileVo">
-  select * from capsulecloset.file where id=#{id} and clothes=#{clothes}
+  select * from capsulecloset.file where id=#{id} and clothes=#{clothes} and del='N'
   </select>
   
   <select id="getShoes" resultType="kr.green.capsuleCloset.vo.FileVo">
-  select * from capsulecloset.file where id=#{id} and clothes=#{clothes}
+  select * from capsulecloset.file where id=#{id} and clothes=#{clothes} and del='N'
   </select>
   
   <select id="getClosetVo" resultType="kr.green.capsuleCloset.vo.ClosetVo">
@@ -46,7 +46,7 @@
   select * from capsuleCloset.myCloset where closetNum=#{closetNum}
   </select>
   
-   <insert id="setTodaysClothes">
+  <insert id="setTodaysClothes">
  	insert into
   	todaysClothes(id,todaystop,todaysbottom,todaysouter,todaysshoes)
   	values(#{id},#{todaysClothesVo.todaystop},#{todaysClothesVo.todaysbottom},#{todaysClothesVo.todaysouter},#{todaysClothesVo.todaysshoes})
@@ -73,7 +73,26 @@
   set	del = 'Y'
   where id=#{id}
   </update>
-  
 
+  <select id="getToday" resultType="kr.green.capsuleCloset.vo.TodaysClothesVo">
+  	select * from capsulecloset.todaysclothes where numToday=#{numToday}
+  </select>
   
+  <insert id="setMainPhoto">
+  	insert into
+  	mainphoto(mainTop,mainBottom,mainOuter,mainShoes,id)
+  	values(#{todaysClothes.todaystop},#{todaysClothes.todaysbottom},#{todaysClothes.todaysouter},#{todaysClothes.todaysshoes},#{todaysClothes.id})
+  </insert>
+	
+  <select id="getMainPhotoVo" resultType="kr.green.capsuleCloset.vo.MainPhotoVo">
+  	select * from capsulecloset.mainPhoto
+  </select>
+  
+   <select id="getFileVo2" resultType="kr.green.capsuleCloset.vo.FileVo">
+  	select * from capsulecloset.file where fileTableNum=#{mainPhotoVo.mainTop} or fileTableNum=#{mainPhotoVo.mainBottom} or fileTableNum=#{mainPhotoVo.mainOuter} or fileTableNum=#{mainPhotoVo.mainShoes}
+  </select>
+
+  <select id="getFileVo3" resultType="kr.green.capsuleCloset.vo.FileVo">
+  	select * from capsulecloset.file
+  </select>
 </mapper>

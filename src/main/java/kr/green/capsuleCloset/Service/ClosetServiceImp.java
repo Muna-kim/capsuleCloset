@@ -1,10 +1,6 @@
 package kr.green.capsuleCloset.service;
 
 import java.util.ArrayList;
-import java.util.Date;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,8 +8,8 @@ import org.springframework.stereotype.Service;
 import kr.green.capsuleCloset.dao.ClosetDao;
 import kr.green.capsuleCloset.vo.ClosetVo;
 import kr.green.capsuleCloset.vo.FileVo;
+import kr.green.capsuleCloset.vo.MainPhotoVo;
 import kr.green.capsuleCloset.vo.TodaysClothesVo;
-import kr.green.capsuleCloset.vo.UserVo;
 
 @Service
 public class ClosetServiceImp implements ClosetService {
@@ -107,7 +103,40 @@ public class ClosetServiceImp implements ClosetService {
 		closetDao.setDelFile(id);
 	}
 
+	@Override
+	public TodaysClothesVo getToday(int numToday) {
+		return closetDao.getToday(numToday);
+		
+	}
 
+	@Override
+	public void setMainPhoto(TodaysClothesVo todaysClothes) {
+		closetDao.setMainPhoto(todaysClothes);
+		
+	}
+
+	@Override
+	public ArrayList<MainPhotoVo> getMainPhotoVo() {
+		return closetDao.getMainPhotoVo();
+	}
+
+//	@Override
+//	public ArrayList<FileVo> getFileVo2(ArrayList<MainPhotoVo> mainPhotoVo) {
+//		ArrayList<FileVo> list = new ArrayList<FileVo>();
+//		for(int i = 0; i<mainPhotoVo.size();i++) {
+//			FileVo fileTopTmp = closetDao.getFileVo2(mainPhotoVo.get(i).getMainTop());
+//			list.add(fileTopTmp);
+//		}
+//		return list;
+//	}
+
+	@Override
+	public ArrayList<FileVo> getFileVo3() {
+		return closetDao.getFileVo3();
+	}
+
+
+	
 
 
 

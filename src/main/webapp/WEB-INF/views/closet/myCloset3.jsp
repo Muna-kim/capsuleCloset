@@ -63,11 +63,13 @@
 		 	<div class="bigBox">
 			 	<div class="after top">
 			 	<c:forEach var="tmp" items="${fileTop}">
-			 		<input type="hidden" value="${tmp.fileTableNum }" name="fileTabeNum">
-			 		<div class=small-box >
-					<img src="<%=request.getContextPath()%>/resources/image${tmp.file}" class=small-img>
-			        <div class="preview"></div>
-			 		</div>
+			 		<c:if test="${tmp.del=='N'}">
+				 		<input type="hidden" value="${tmp.fileTableNum }" name="fileTabeNum">
+				 		<div class=small-box >
+						<img src="<%=request.getContextPath()%>/resources/image${tmp.file}" class=small-img>
+				        <div class="preview"></div>
+				 		</div>
+				 	</c:if>
 			 	</c:forEach>
 			 	</div>
 			 	
@@ -75,33 +77,39 @@
 			 	<div>Bottom</div>
 			 	<div class="after bottom">
 			 	<c:forEach var="tmp" items="${fileBottom}">
-			 		<input type="hidden" value="${tmp.fileTableNum}" name="fileTabeNum">
-			 		<div class=small-box>
-			 		<img src="<%=request.getContextPath()%>/resources/image${tmp.file}">
-			        <div class="preview"></div>
-			        </div>
+			 		<c:if test="${tmp.del=='N'}">
+				 		<input type="hidden" value="${tmp.fileTableNum}" name="fileTabeNum">
+				 		<div class=small-box>
+				 		<img src="<%=request.getContextPath()%>/resources/image${tmp.file}">
+				        <div class="preview"></div>
+				        </div>
+				    </c:if>
 			 	</c:forEach>
 			 	</div>
 			 	
 			 	<div>Outer</div>
 			 	<div class="after outer">
 			 	<c:forEach var="tmp" items="${fileOuter}">
-			 		<input type="hidden" value="${tmp.fileTableNum }" name="fileTabeNum">
-			 		<div class=small-box>
-			 		<img src="<%=request.getContextPath()%>/resources/image${tmp.file}">
-			        <div class="preview"></div>
-			        </div>
+			 		<c:if test="${tmp.del=='N'}">
+				 		<input type="hidden" value="${tmp.fileTableNum }" name="fileTabeNum">
+				 		<div class=small-box>
+				 		<img src="<%=request.getContextPath()%>/resources/image${tmp.file}">
+				        <div class="preview"></div>
+				        </div>
+			        </c:if>
 			 	</c:forEach>
 			 	</div>
 			 	
 			 	<div>shoes</div>
 			 	<div class="after shoes">
 			 	<c:forEach var="tmp" items="${fileShoes}">
-			 		<input type="hidden" value="${tmp.fileTableNum }" name="fileTabeNum">
-			 		<div class=small-box>
-			 		<img src="<%=request.getContextPath()%>/resources/image${tmp.file}">
-			        <div class="preview"></div>
-			        </div>
+			 		<c:if test="${tmp.del=='N'}">
+				 		<input type="hidden" value="${tmp.fileTableNum }" name="fileTabeNum">
+				 		<div class=small-box>
+				 		<img src="<%=request.getContextPath()%>/resources/image${tmp.file}">
+				        <div class="preview"></div>
+				        </div>
+			        </c:if>
 			 	</c:forEach>
 			 	</div>
 		 	</div>
@@ -111,16 +119,18 @@
 		 	<button type="submit" class="btn btn-outline-danger">내 옷장 리셋하기</button>
 		 	</form>
 		 	</c:if>
-		 	<form method="post" action="">
-			 	<div class=coordinate>
-				 		<div class="small-box top"></div>
-				 		<div class="small-box outer"></div>
-				 		<div class="small-box bottom"></div>
-				 		<div class="small-box shoes"></div>
-						
-				 		<button type="submit" class="btn btn btn-secondary">오늘의 옷 등록</button>
-				 </div>
-			 </form>
+		 	<c:if test="${closet.id==user.id}">
+			 	<form method="post" action="">
+				 	<div class=coordinate>
+					 		<div class="small-box top"></div>
+					 		<div class="small-box outer"></div>
+					 		<div class="small-box bottom"></div>
+					 		<div class="small-box shoes"></div>
+							
+					 		<button type="submit" class="btn btn btn-secondary">오늘의 옷 등록</button>
+					 </div>
+				 </form>
+			 </c:if>
  	<script type="text/javascript">
 	  $(document).ready(function (e){
 	    $("input[type='file']").change(function(e){

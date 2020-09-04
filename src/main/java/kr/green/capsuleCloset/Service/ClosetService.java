@@ -1,12 +1,11 @@
 package kr.green.capsuleCloset.service;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 import kr.green.capsuleCloset.vo.ClosetVo;
 import kr.green.capsuleCloset.vo.FileVo;
+import kr.green.capsuleCloset.vo.MainPhotoVo;
 import kr.green.capsuleCloset.vo.TodaysClothesVo;
-import kr.green.capsuleCloset.vo.UserVo;
 
 public interface ClosetService {
 
@@ -39,6 +38,21 @@ public interface ClosetService {
 	void setDelCloset(String id);
 
 	void setDelFile(String id);
+
+	TodaysClothesVo getToday(int numToday);
+
+	void setMainPhoto(TodaysClothesVo todaysClothes);
+
+	ArrayList<MainPhotoVo> getMainPhotoVo();
+
+//	ArrayList<FileVo> getFileVo2(ArrayList<MainPhotoVo> mainPhotoVo);
+
+	ArrayList<FileVo> getFileVo3();
+
+
+
+
+
 
 
 

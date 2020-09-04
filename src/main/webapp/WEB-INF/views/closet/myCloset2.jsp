@@ -66,25 +66,24 @@
 	 	<div class="bigBox">
 		 	<div>Top</div>
 		 	<div class="after">
-		 	
-		 	<c:forEach var="tmp" items="${fileTop}">
-			 		<div class=small-box >
-			 		<c:if test="${fileVo.del=='N'}">
-					<img src="<%=request.getContextPath()%>/resources/image${tmp.file}">
-					</c:if>
-			        <div class="preview"></div>
-			 		</div>
+			 	<c:forEach var="tmp" items="${fileTop}">
+				 		<c:if test="${tmp.del=='N'}">
+				 			<div class=small-box >
+								<img src="<%=request.getContextPath()%>/resources/image${tmp.file}">
+				        		<div class="preview"></div>
+				 			</div>
+				 		</c:if>
+				 		
+				 </c:forEach>
+			 	
+			 	<c:forEach begin="1" end="${closet.top-fileTop.size()}">
+				 		<div class=small-box>
+				 				<input type="file" class="file" name="file2" id="file" multiple>
+				        		<div class="preview"></div>
+				 				<i id="icon-plus" class="icon-plus fas fa-plus"></i>
+				 		</div>
 			 	</c:forEach>
-		 	
-		 	<c:forEach begin="1" end="${closet.top-fileTop.size()}">
-		 		<div class=small-box>
-		 		<c:if test="${fileVo.del!='N'}">
-		 		<input type="file" class="file" name="file2" id="file" multiple>
-		 		</c:if>
-		        <div class="preview"></div>
-		 		<i id="icon-plus" class="icon-plus fas fa-plus"></i>
-		 		</div>
-		 	</c:forEach>
+			 	
 		 	</div>
 		 	
 			
@@ -93,10 +92,13 @@
 		 	<div class="after">
 		 	
 		 	<c:forEach var="tmp" items="${fileBottom}">
+		 		<c:if test="${tmp.del=='N'}">
 			 		<div class=small-box>
 			 		<img src="<%=request.getContextPath()%>/resources/image${tmp.file}">
 			        <div class="preview"></div></div>
-			 	</c:forEach>
+			    </c:if>
+			   
+			</c:forEach>
 			 	
 		 	<c:forEach begin="1" end="${closet.bottom-fileBottom.size()}">
 		 		<div class=small-box>
@@ -110,11 +112,15 @@
 		 	<div>Outer</div>
 		 	<div class="after">
 		 	<c:forEach var="tmp" items="${fileOuter}">
+		 		<c:if test="${tmp.del=='N'}">
 			 		<div class=small-box>
 			 		<img src="<%=request.getContextPath()%>/resources/image${tmp.file}">
 			        <div class="preview"></div>
 			        </div>
-			 	</c:forEach>
+			    </c:if>
+			    
+			    
+			</c:forEach>
 		 	
 		 	<c:forEach begin="1" end="${closet.outer-fileOuter.size()}">
 		 		<div class=small-box>
@@ -128,12 +134,16 @@
 		 	<div>shoes</div>
 		 	<div class="after">
 		 	<c:forEach var="tmp" items="${fileShoes}">
+		 		<c:if test="${tmp.del=='N'}">
 			 		<div class=small-box>
 			 		<img src="<%=request.getContextPath()%>/resources/image${tmp.file}">
 			        <div class="preview"></div>
 			        </div>
-			 	</c:forEach>
-		 	<c:forEach begin="1" end="${closet.shoes-fileShoes.size()}">
+			    </c:if>
+		        
+			</c:forEach>
+			 	
+		 	<c:forEach begin="1" end="2">
 		 		<div class=small-box>
 		 		<input type="file" class="file" name="file5" id="file" multiple>
 		        <div class="preview"></div>
