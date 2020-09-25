@@ -59,6 +59,7 @@
 </style>
 <body>
  My Closet
+ <a href="<%=request.getContextPath()%>/myTodays"><button class="btn btn-outline-secondary">나의 오늘의 옷</button></a>
 		 	<div>Top</div>
 		 	<div class="bigBox">
 			 	<div class="after top">
@@ -113,25 +114,27 @@
 			 	</c:forEach>
 			 	</div>
 		 	</div>
-		 	<a href="<%=request.getContextPath()%>/myTodays"><button class="btn btn-outline-secondary">나의 오늘의 옷</button></a>
-		 	<c:if test="${closetNum==null}">
-		 	<form method="post" action="<%=request.getContextPath()%>/myCloset4">
-		 	<button type="submit" class="btn btn-outline-danger">내 옷장 리셋하기</button>
-		 	</form>
-		 	</c:if>
+		 	
 		 	<c:if test="${closet.id==user.id}">
-			 	<form method="post" action="">
-				 	<div class=coordinate>
-					 		<div class="small-box top"></div>
-					 		<div class="small-box outer"></div>
-					 		<div class="small-box bottom"></div>
-					 		<div class="small-box shoes"></div>
-							
-					 		<button type="submit" class="btn btn btn-secondary">오늘의 옷 등록</button>
-					 </div>
-				 </form>
+			 	<c:if test="${closetNum==null}">
+			 	<form method="post" action="<%=request.getContextPath()%>/myCloset4">
+			 	<button type="submit" class="btn btn-outline-danger">내 옷장 리셋하기</button>
+			 	</form>
+			 	</c:if>
+				 	<form method="post" action="">
+					 	<div class=coordinate>
+						 		<div class="small-box top"></div>
+						 		<div class="small-box outer"></div>
+						 		<div class="small-box bottom"></div>
+						 		<div class="small-box shoes"></div>
+						 		<button type="submit" class="btn btn btn-secondary">오늘의 옷 등록</button>
+						 </div>
+					 </form>
 			 </c:if>
  	<script type="text/javascript">
+	
+
+
 	  $(document).ready(function (e){
 	    $("input[type='file']").change(function(e){
 	

@@ -110,7 +110,6 @@
 			</c:if>
 		</c:forEach>
 	 </div>
-	 
 	 <div class="after"></div>
 </body>
 

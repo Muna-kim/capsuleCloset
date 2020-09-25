@@ -95,4 +95,18 @@
   <select id="getFileVo3" resultType="kr.green.capsuleCloset.vo.FileVo">
   	select * from capsulecloset.file
   </select>
+  
+  <select id="findId" resultType="String">
+  	select id from capsulecloset.mycloset
+  </select>
+  
+  <select id="getMainPhoto" resultType="kr.green.capsuleCloset.vo.MainPhotoVo">
+  	select * from capsulecloset.mainphoto where id=#{id}
+  </select>
+  
+  <update id="updateMainPhoto">
+  	update mainPhoto
+  	set mainTop=#{todaysClothes.todaystop},mainBottom=#{todaysClothes.todaysbottom},mainOuter=#{todaysClothes.todaysouter},mainShoes=#{todaysClothes.todaysshoes}
+  	where id=#{todaysClothes.id}
+  </update>
 </mapper>

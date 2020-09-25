@@ -49,6 +49,8 @@ public interface ClosetDao {
 
 	void setMainPhoto(@Param("todaysClothes")TodaysClothesVo todaysClothes);
 
+	void updateMainPhoto(@Param("todaysClothes")TodaysClothesVo todaysClothes, @Param("id")String id);
+	
 	ArrayList<MainPhotoVo> getMainPhotoVo();
 
 //	ArrayList<FileVo> getFileVo2(@Param("mainPhotoVo")ArrayList<MainPhotoVo> mainPhotoVo);
@@ -56,6 +58,12 @@ public interface ClosetDao {
 //	FileVo getFileVo2(@Param("mainPhotoVo")MainPhotoVo mainPhotoVo);
 
 	ArrayList<FileVo> getFileVo3();
+
+	boolean findId(String id);
+
+	MainPhotoVo getMainPhoto(@Param("id")String id);
+
+	
 
 
 

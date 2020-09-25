@@ -61,7 +61,8 @@
 </style>
 <body>
  My Closet
- ${registerdate}
+<a href="<%=request.getContextPath()%>/myCloset3"><button type="button" class="btn btn-outline-secondary">내옷장보기</button></a><br>
+캡슐옷 사진 추가하기
 	 	<form method="post" action=""  enctype="multipart/form-data">
 	 	<div class="bigBox">
 		 	<div>Top</div>
@@ -75,7 +76,6 @@
 				 		</c:if>
 				 		
 				 </c:forEach>
-			 	
 			 	<c:forEach begin="1" end="${closet.top-fileTop.size()}">
 				 		<div class=small-box>
 				 				<input type="file" class="file" name="file2" id="file" multiple>
@@ -83,11 +83,8 @@
 				 				<i id="icon-plus" class="icon-plus fas fa-plus"></i>
 				 		</div>
 			 	</c:forEach>
-			 	
 		 	</div>
 		 	
-			
-			
 		 	<div>Bottom</div>
 		 	<div class="after">
 		 	
@@ -143,7 +140,7 @@
 		        
 			</c:forEach>
 			 	
-		 	<c:forEach begin="1" end="2">
+		 	<c:forEach begin="1" end="${closet.shoes-fileShoes.size()}">
 		 		<div class=small-box>
 		 		<input type="file" class="file" name="file5" id="file" multiple>
 		        <div class="preview"></div>
@@ -153,7 +150,7 @@
 		 	</div>
 		 </div>
 		 	<button type="submit" class="btn btn-secondary">옷장 저장하기</button>
-		 	<a href="<%=request.getContextPath()%>/myCloset3"><button type="button" class="btn btn-outline-secondary">내옷장보기</button></a>
+		 	
 	 </form>
  	<script type="text/javascript">
 	  $(document).ready(function (e){

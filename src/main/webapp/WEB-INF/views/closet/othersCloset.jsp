@@ -67,6 +67,7 @@
 				 		<div class="small-box">
 				 			<div class="img-box">
 					 			<div class="small-box3 top">
+					 				<a href="<%=request.getContextPath()%>/myCloset3?closetNum=${tmp.closetNum}">
 					 				<c:forEach var="tmp2" items="${mainPhotoVoList}">
 						 				<c:if test="${tmp.id==tmp2.id}">
 						 					<c:forEach var="tmp3" items="${fileList}">
@@ -76,41 +77,48 @@
 							 				</c:forEach>
 						 				</c:if>
 					 				</c:forEach>
+					 				</a>
 					 			</div>
 					 			<div class="small-box3 outer">
-					 				<c:forEach var="tmp2" items="${mainPhotoVoList}">
-						 				<c:if test="${tmp.id==tmp2.id}">
-						 					<c:forEach var="tmp3" items="${fileList}">
-								 				<c:if test="${tmp2.mainOuter==tmp3.fileTableNum}">
-									 					<img src="<%=request.getContextPath()%>/resources/image${tmp3.file}">
-								 				</c:if>
-							 				</c:forEach>
-						 				</c:if>
-					 				</c:forEach>
+					 				<a href="<%=request.getContextPath()%>/myCloset3?closetNum=${tmp.closetNum}">
+						 				<c:forEach var="tmp2" items="${mainPhotoVoList}">
+							 				<c:if test="${tmp.id==tmp2.id}">
+							 					<c:forEach var="tmp3" items="${fileList}">
+									 				<c:if test="${tmp2.mainOuter==tmp3.fileTableNum}">
+										 					<img src="<%=request.getContextPath()%>/resources/image${tmp3.file}">
+									 				</c:if>
+								 				</c:forEach>
+							 				</c:if>
+						 				</c:forEach>
+					 				</a>
 					 			</div>
 					 			<div class="after">
 					 			</div>
 					 			<div class="small-box3 bottom">
-					 				<c:forEach var="tmp2" items="${mainPhotoVoList}">
-						 				<c:if test="${tmp.id==tmp2.id}">
-						 					<c:forEach var="tmp3" items="${fileList}">
-								 				<c:if test="${tmp2.mainBottom==tmp3.fileTableNum}">
-									 					<img src="<%=request.getContextPath()%>/resources/image${tmp3.file}">
-								 				</c:if>
-							 				</c:forEach>
-						 				</c:if>
-					 				</c:forEach>
+					 				<a href="<%=request.getContextPath()%>/myCloset3?closetNum=${tmp.closetNum}">
+						 				<c:forEach var="tmp2" items="${mainPhotoVoList}">
+							 				<c:if test="${tmp.id==tmp2.id}">
+							 					<c:forEach var="tmp3" items="${fileList}">
+									 				<c:if test="${tmp2.mainBottom==tmp3.fileTableNum}">
+										 					<img src="<%=request.getContextPath()%>/resources/image${tmp3.file}">
+									 				</c:if>
+								 				</c:forEach>
+							 				</c:if>
+						 				</c:forEach>
+					 				</a>
 					 			</div>
 					 			<div class="small-box3 shoes">
-					 				<c:forEach var="tmp2" items="${mainPhotoVoList}">
-						 				<c:if test="${tmp.id==tmp2.id}">
-						 					<c:forEach var="tmp3" items="${fileList}">
-								 				<c:if test="${tmp2.mainShoes==tmp3.fileTableNum}">
-									 					<img src="<%=request.getContextPath()%>/resources/image${tmp3.file}">
-								 				</c:if>
-							 				</c:forEach>
-						 				</c:if>
-					 				</c:forEach>
+					 				<a href="<%=request.getContextPath()%>/myCloset3?closetNum=${tmp.closetNum}">
+						 				<c:forEach var="tmp2" items="${mainPhotoVoList}">
+							 				<c:if test="${tmp.id==tmp2.id}">
+							 					<c:forEach var="tmp3" items="${fileList}">
+									 				<c:if test="${tmp2.mainShoes==tmp3.fileTableNum}">
+										 					<img src="<%=request.getContextPath()%>/resources/image${tmp3.file}">
+									 				</c:if>
+								 				</c:forEach>
+							 				</c:if>
+						 				</c:forEach>
+					 				</a>
 					 			</div>
 				 			</div>
 				 			

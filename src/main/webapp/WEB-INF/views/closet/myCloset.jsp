@@ -8,11 +8,12 @@
 <title>My Closet</title>
 </head>
 <body>
-My Closet
+목표설정하기
 	<c:if test="${user!=null}">
 		<form method="post" action="" id="setForm">
 			<div class="group1">
-			  <label for="setGoal">목표설정하기:</label>
+			  <label for="setGoal">원하는 총 옷의 개수를 설정하세요(상의+하의+외투+신발):</label>
+			  
 			  <select class="form-control" id="setGoal" name="setGoal">
 			    <option>60</option>
 			    <option>50</option>
@@ -23,17 +24,17 @@ My Closet
 			</div>
 	
 			<div class="group2">
-			  <label for="title">Title:</label>
+			  <label for="title">Title (옷장의 이름을 설정):</label>
 			  <input type="text" class="form-control" id="title" name="title">
-			  <label for="goal">Goal:</label>
+			  <label for="goal">Goal (설정한 목표 총개수):</label>
 			  <input type="number" class="form-control" id="goal" value="setGoal" readonly>
-			  <label for="top">Top:</label>
+			  <label for="top">Top (상의 개수 설정):</label>
 			  <input type="number" class="form-control" id="top" name="top">
-			  <label for="bottom">Bottom:</label>
+			  <label for="bottom">Bottom (하의 개수 설정):</label>
 			  <input type="number" class="form-control" id="bottom" name="bottom">
-			  <label for="outer">Outer:</label>
+			  <label for="outer">Outer (외투 개수 설정):</label>
 			  <input type="number" class="form-control" id="outer" name="outer">
-			  <label for="shoes">Shoes:</label>
+			  <label for="shoes">Shoes (신발 개수 설정):</label>
 			  <input type="number" class="form-control" id="shoes" name="shoes">
 			  <button type="button" class="btn btn-outline-secondary btn-sum">Add All</button></br>
 			  <label for="sum">Sum:</label>

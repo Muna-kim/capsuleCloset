@@ -109,11 +109,11 @@ public class ClosetServiceImp implements ClosetService {
 		
 	}
 
-	@Override
-	public void setMainPhoto(TodaysClothesVo todaysClothes) {
-		closetDao.setMainPhoto(todaysClothes);
-		
-	}
+//	@Override
+//	public void setMainPhoto(TodaysClothesVo todaysClothes) {
+//		closetDao.setMainPhoto(todaysClothes);
+//		
+//	}
 
 	@Override
 	public ArrayList<MainPhotoVo> getMainPhotoVo() {
@@ -133,6 +133,18 @@ public class ClosetServiceImp implements ClosetService {
 	@Override
 	public ArrayList<FileVo> getFileVo3() {
 		return closetDao.getFileVo3();
+	}
+
+	@Override
+	public void setMainPhoto(TodaysClothesVo todaysClothes) {
+		MainPhotoVo mainVo = closetDao.getMainPhoto(todaysClothes.id);
+		if(mainVo !=null) {
+			closetDao.updateMainPhoto(todaysClothes,mainVo.getId());
+		}
+		else{
+			closetDao.setMainPhoto(todaysClothes);
+		}
+		
 	}
 
 

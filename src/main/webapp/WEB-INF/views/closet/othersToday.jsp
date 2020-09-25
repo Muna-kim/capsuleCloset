@@ -57,7 +57,6 @@
 				 		<div class="small-box top">
 				 			<input type="hidden" value="${tmp.todaystop}">
 							<img src="<%=request.getContextPath()%>/resources/image${tmp2.file}">
-		
 						</div>
 					 </c:if>
 				 </c:forEach>

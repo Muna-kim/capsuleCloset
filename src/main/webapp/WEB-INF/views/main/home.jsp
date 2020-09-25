@@ -12,6 +12,6 @@
 </h1>
 <img src="<%=request.getContextPath()%>/resources/image/1aa.jpg" width=100%>
 
-<P>  capsule closet </P>
+<P>  </P>
 </body>
 </html>
